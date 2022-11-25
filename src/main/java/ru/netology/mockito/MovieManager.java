@@ -9,9 +9,8 @@ public class MovieManager {
     }
 
     public MovieManager(int limit) {
-        if (limit > 0) {
             movieLimit = limit;
-        }
+
 
     }
 
