@@ -4,15 +4,16 @@ public class MovieManager {
     private String[] movies = new String[0];
     private int movieLimit = 10;
 
-
-    public MovieManager(int limit) {
-        this.movieLimit = movieLimit;
-    }
-
     public MovieManager() {
 
     }
 
+    public MovieManager(int limit) {
+        if (limit > 0) {
+            movieLimit = limit;
+        }
+
+    }
 
     public void addMovie(String movie) {
         String[] tmp = new String[movies.length + 1];
@@ -37,7 +38,6 @@ public class MovieManager {
             resultLength = movies.length;
         }
         String[] result = new String[resultLength];
-
         for (int i = 0; i < result.length; i++) {
             int index = resultLength - i - 1;
             result[i] = movies[index];
