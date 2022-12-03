@@ -49,9 +49,8 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void shouldShowBelowLimit() {
+    public void shouldShowIfLimitLessThenMovies() {
         MovieManager manager = new MovieManager(5);
-
 
         manager.addMovie("Maxoynee 1");
         manager.addMovie("Maxoynee 2");
@@ -64,7 +63,8 @@ public class MovieManagerTest {
         manager.addMovie("Maxoynee 9");
         manager.addMovie("Maxoynee 10");
 
-        String[] expected = {"Maxoynee 5", "Maxoynee 4", "Maxoynee 3", "Maxoynee 2", "Maxoynee 1"};
+
+        String[] expected = {"Maxoynee 10", "Maxoynee 9", "Maxoynee 8", "Maxoynee 7", "Maxoynee 6"};
         String[] actual = manager.findLast();
         assertArrayEquals(expected, actual);
     }
@@ -79,7 +79,7 @@ public class MovieManagerTest {
 
     @Test
     public void shouldShowOverLimit() {
-        MovieManager manager = new MovieManager(10);
+        MovieManager manager = new MovieManager(20);
         manager.addMovie("Maxoynee 1");
         manager.addMovie("Maxoynee 2");
         manager.addMovie("Maxoynee 3");
@@ -90,20 +90,9 @@ public class MovieManagerTest {
         manager.addMovie("Maxoynee 8");
         manager.addMovie("Maxoynee 9");
         manager.addMovie("Maxoynee 10");
-        manager.addMovie("Maxoynee 11");
         String[] expected = {"Maxoynee 10", "Maxoynee 9", "Maxoynee 8", "Maxoynee 7", "Maxoynee 6", "Maxoynee 5", "Maxoynee 4", "Maxoynee 3", "Maxoynee 2", "Maxoynee 1"};
         String[] actual = manager.findLast();
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void shouldShowDefaultLimitWithLessMovies() {
-        MovieManager manager = new MovieManager(10);
-        manager.addMovie("Maxoynee 1");
-        manager.addMovie("Maxoynee 2");
-        manager.addMovie("Maxoynee 3");
-        String[] expected = {"Maxoynee 3", "Maxoynee 2", "Maxoynee 1"};
-        String[] actual = manager.findLast();
-        assertArrayEquals(expected, actual);
-    }
 }
